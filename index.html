@@ -36,27 +36,37 @@
 
 <div id="wrap1">
 
-  <canvas id="anvas"></canvas>
+  <canvas id="canvas"></canvas>
 
 </div><!--wrap1-->
 
 </body>
 
 <script type="text/javascript">
-function init() {
-  var cvs = document.getElementById(canvas);
-  var ctx = canvas.getContext('2d');
 
-  var bird = newImage();
-  var background = newImage();
-  var foreground = newImage();
-  var pipe_up = newImage();
-  var pipe_bottom = newImage();
-}
+  var cvs = document.getElementById('canvas');
+  var ctx = cvs.getContext('2d');
+
+  var bird = new Image();
+  var bg = new Image();
+  var fg = new Image();
+  var pipeUp = new Image();
+  var pipeBottom = new Image();
+
+  bird.src = 'images/bird.png';
+  bg.src = 'images/bird.png';
+  fg.src = 'images/bird.png';
+  pipeUp.src = 'images/bird.png';
+  pipeBottom.src = 'images/bird.png';
+
+var gap = 90;
+
 function draw() {
-
+   ctx.drawImage(bg, 0, 0);
 }
-init();
+
+
+draw();
 </script>
 <script src="js/jquery.js"></script>
 
