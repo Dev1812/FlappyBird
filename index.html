@@ -9,7 +9,7 @@
 
 <head>
   <title>Flappy Bird</title>
-  <link rel="shortcut icon" href="/images/icons/ScreenBrush.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="images/icons/ScreenBrush.ico" type="image/x-icon">
 
   <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
   <meta name="title" content="Flappy Bird">
@@ -27,7 +27,7 @@
   <meta http-equiv="Pragma" content="no-cache">
 
   <meta property="og:title" content="Flappy Bird">
-  <meta property="og:image" content="/images/icons/favicon.ico?2">
+  <meta property="og:image" content="images/icons/favicon.ico?2">
   <meta property="og:description" content="Игра, в которой нужно лететь вперед избегая препятствия">
 
 
@@ -36,10 +36,28 @@
 
 <div id="wrap1">
 
+  <canvas id="anvas"></canvas>
+
 </div><!--wrap1-->
 
 </body>
 
+<script type="text/javascript">
+function init() {
+  var cvs = document.getElementById(canvas);
+  var ctx = canvas.getContext('2d');
+
+  var bird = newImage();
+  var background = newImage();
+  var foreground = newImage();
+  var pipe_up = newImage();
+  var pipe_bottom = newImage();
+}
+function draw() {
+
+}
+init();
+</script>
 <script src="js/jquery.js"></script>
 
 </html>
