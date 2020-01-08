@@ -1,0 +1,23 @@
+
+html, body{
+  margin:0;
+}
+.content{
+  margin:0 auto;
+  padding-top:57px;
+  width:288px;
+}
+canvas{
+  border-radius:7px;
+}
+body{
+  background-color:#FBFBFB;
+}
+.gl_title{
+  font-size:24px;
+  text-align: center;
+  text-transform:uppercase;
+  font-family: Arial, Helvetica sans-serif;
+  margin-bottom:24px;
+  font-weight: bold;
+}

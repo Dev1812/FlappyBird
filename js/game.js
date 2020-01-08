@@ -13,24 +13,24 @@ fg.src = "img/fg.png";
 pipeUp.src = "img/pipeUp.png";
 pipeBottom.src = "img/pipeBottom.png";
 
-// Звуковые файлы
-var fly = new Audio();
-var score_audio = new Audio();
-
-fly.src = "audio/fly.mp3";
-score_audio.src = "audio/score.mp3";
-
 var gap = 90;
 
-// При нажатии на какую-либо кнопку
+/**
+ * @desc При нажатии на какую-либо кнопку, запускаем функцию MoveUp()
+ *
+ */
 document.addEventListener("keydown", moveUp);
 
 function moveUp() {
- yPos -= 25;
+  axis_y -= 25;
  fly.play();
 }
 
-// Создание блоков
+/**
+ * @desc
+ * Создание блоков
+ *
+ */
 var pipe = [];
 
 pipe[0] = {
@@ -39,9 +39,12 @@ pipe[0] = {
 }
 
 var score = 0;
-// Позиция птички
+/**
+ * @desc Позиция птички
+ *
+ */
 var xPos = 10;
-var yPos = 150;
+var axis_y = 150;
 var grav = 1.5;
 
 function draw() {
@@ -63,8 +66,8 @@ function draw() {
  // Отслеживание прикосновений
  if(xPos + bird.width >= pipe[i].x
  && xPos <= pipe[i].x + pipeUp.width
- && (yPos <= pipe[i].y + pipeUp.height
- || yPos + bird.height >= pipe[i].y + pipeUp.height + gap) || yPos + bird.height >= cvs.height - fg.height) {
+ && (axis_y <= pipe[i].y + pipeUp.height
+ || axis_y + bird.height >= pipe[i].y + pipeUp.height + gap) || axis_y + bird.height >= cvs.height - fg.height) {
  location.reload(); // Перезагрузка страницы
  }
 
@@ -75,9 +78,9 @@ function draw() {
  }
 
  ctx.drawImage(fg, 0, cvs.height - fg.height);
- ctx.drawImage(bird, xPos, yPos);
+ ctx.drawImage(bird, xPos, axis_y);
 
- yPos += grav;
+ axis_y += grav;
 
  ctx.fillStyle = "#000";
  ctx.font = "24px Verdana";
