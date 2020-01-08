@@ -1,72 +1,15 @@
-<?php
-  $page_title = (isset($param['page_title']) && !empty($param['page_title'])) ? $param['page_title'] : '...';
-  $page_description = (isset($param['page_description']) && !empty($param['page_description'])) ? $param['page_description'] : '...';
-  $page_keywords = (isset($param['page_keywords']) && !empty($param['page_keywords'])) ? $param['page_keywords'] : '...';
-?>
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Flappy Bird</title>
-  <link rel="shortcut icon" href="images/icons/ScreenBrush.ico" type="image/x-icon">
-
-  <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
-  <meta name="title" content="Flappy Bird">
-  <meta name="description" content="Игра, в которой нужно лететь вперед избегая препятствия">
-  <meta name="keywords" content="Flappy Bird, flappybird, летящая птичка">
-
-  <meta name="robots" content="noimageindex, noarchive">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#000000">
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
-  
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Cache-Control" content="no-cache">
-  <meta http-equiv="Pragma" content="no-cache">
-
-  <meta property="og:title" content="Flappy Bird">
-  <meta property="og:image" content="images/icons/favicon.ico?2">
-  <meta property="og:description" content="Игра, в которой нужно лететь вперед избегая препятствия">
-
-
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Flappy Bird</title>
 </head>
 <body>
 
-<div id="wrap1">
+ <canvas id="canvas" width="288" height="512"></canvas>
 
-  <canvas id="canvas"></canvas>
-
-</div><!--wrap1-->
-
+ <script src="js/game.js"></script>
 </body>
-
-<script type="text/javascript">
-
-  var cvs = document.getElementById('canvas');
-  var ctx = cvs.getContext('2d');
-
-  var bird = new Image();
-  var bg = new Image();
-  var fg = new Image();
-  var pipeUp = new Image();
-  var pipeBottom = new Image();
-
-  bird.src = 'images/bird.png';
-  bg.src = 'images/bird.png';
-  fg.src = 'images/bird.png';
-  pipeUp.src = 'images/bird.png';
-  pipeBottom.src = 'images/bird.png';
-
-var gap = 90;
-
-function draw() {
-   ctx.drawImage(bg, 0, 0);
-}
-
-setTimeout(function() {draw();}, 1000);
-</script>
-<script src="js/jquery.js"></script>
-
 </html>
