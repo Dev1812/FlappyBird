@@ -23,7 +23,6 @@ document.addEventListener("keydown", moveUp);
 
 function moveUp() {
   axis_y -= 25;
- fly.play();
 }
 
 /**
@@ -48,45 +47,44 @@ var axis_y = 150;
 var grav = 1.5;
 
 function draw() {
- ctx.drawImage(bg, 0, 0);
+  ctx.drawImage(bg, 0, 0);
+  for(var i = 0; i < pipe.length; i++) {
+    ctx.drawImage(pipeUp, pipe[i].x, pipe[i].y);
+    ctx.drawImage(pipeBottom, pipe[i].x, pipe[i].y + pipeUp.height + gap);
 
- for(var i = 0; i < pipe.length; i++) {
- ctx.drawImage(pipeUp, pipe[i].x, pipe[i].y);
- ctx.drawImage(pipeBottom, pipe[i].x, pipe[i].y + pipeUp.height + gap);
+  pipe[i].x--;
 
- pipe[i].x--;
+  if(pipe[i].x == 125) {
+    pipe.push({
+      x : cvs.width,
+      y : Math.floor(Math.random() * pipeUp.height) - pipeUp.height
+    });
+  }
 
- if(pipe[i].x == 125) {
- pipe.push({
- x : cvs.width,
- y : Math.floor(Math.random() * pipeUp.height) - pipeUp.height
- });
- }
+/**
+ * @desc Отслеживание прикосновений
+ */
+  if(xPos + bird.width >= pipe[i].x && xPos <= pipe[i].x + pipeUp.width && (axis_y <= pipe[i].y + pipeUp.height || axis_y + bird.height >= pipe[i].y + pipeUp.height + gap) || axis_y + bird.height >= cvs.height - fg.height) {
+  onLosing();
 
- // Отслеживание прикосновений
- if(xPos + bird.width >= pipe[i].x
- && xPos <= pipe[i].x + pipeUp.width
- && (axis_y <= pipe[i].y + pipeUp.height
- || axis_y + bird.height >= pipe[i].y + pipeUp.height + gap) || axis_y + bird.height >= cvs.height - fg.height) {
- location.reload(); // Перезагрузка страницы
- }
+  }
 
- if(pipe[i].x == 5) {
- score++;
- score_audio.play();
- }
- }
+    if(pipe[i].x == 5) {
+      score++;
+    }
+  }
 
- ctx.drawImage(fg, 0, cvs.height - fg.height);
- ctx.drawImage(bird, xPos, axis_y);
+  ctx.drawImage(fg, 0, cvs.height - fg.height);
+  ctx.drawImage(bird, xPos, axis_y);
 
- axis_y += grav;
+  axis_y += grav;
 
- ctx.fillStyle = "#000";
- ctx.font = "24px Verdana";
- ctx.fillText("Счет: " + score, 10, cvs.height - 20);
+  ctx.fillStyle = "#000";
+  ctx.font = "24px Verdana";
+  ctx.fillText("Счет: " + score, 10, cvs.height - 20);
 
  requestAnimationFrame(draw);
 }
 
+function onLosing(){console.log('test');}
 pipeBottom.onload = draw;
